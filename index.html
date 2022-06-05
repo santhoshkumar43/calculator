@@ -1,58 +1,76 @@
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+<!DOCTYPE html>
+<html lang="en">
 
-}
-.cal-body{
-    
-    background-image: linear-gradient(70deg, #9362f5, #f03d82);
-    border-radius: 7px;
-    box-shadow: 0 10px 20px 0 rgb(0 0 0 / 20%);
-    margin-top: 50px;
-    padding-left:20px ;
-    padding-right: 20px;
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    height: 600px;
-   
-    
-    
-}
-#screen{
-    background-color: white;
-    font-size: 40px;
-    padding: 20px;
-    height: 60px;
-    display: grid;
-    border-radius: 3px;
-    box-shadow: 0 10px 20px 0 rgb(0 0 0 / 20%);
-    margin-bottom: 10px;
-    
-    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="calstyle.css">
+    <script>
+        function clr(a){
+            
+            document.getElementById('screen').innerHTML = a
+        }
+        function store(x) {
 
-}
-.keys{
-    
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    
-    
-    
-    gap: 10px 10px;
-   
 
-    
-}
-input{
-    font-size: 20px;
-    border: 0px solid;
-    padding: 15px;
-    border-radius: 3px;
-    box-shadow: 0 10px 20px 0 rgb(0 0 0 / 20%);
-    background-color: #ff925c;
-}
+            document.getElementById('screen').innerHTML = document.getElementById('screen').innerHTML + x
+        }
+        function equal(){
+            const E = document.getElementById('screen').innerHTML
+            document.getElementById('screen').innerHTML = eval(E)
+            
+        }
+        function back(){
+            const b = document.getElementById('screen').innerHTML
+            document.getElementById('screen').innerHTML = b.substr(0, b.length - 1)
+        }
+        
+        
+
+    </script>
+</head>
+
+<body>
+    <div class="cal-body">
+        <h1 style="color: WHITE; font-weight: bold; text-align: center; text-shadow: 0 3px rgb(0 0 0 / 20%); ">CALCUlATOR</h1>
+        <div id="screen" >
+            
+
+        </div>
+        <div class="keys">
+            
+            <input type="button" value="AC" onclick="clr(' ')">
+            <input type="button" value="B" onclick="back()">
+            <input type="button" value="%" onclick="store('%')">
+            <input style="background-color: white;" type="button" value="/" onclick="store('/')">
+
+            <input type="button" value="7" onclick="store(7)">
+            <input type="button" value="8" onclick="store(8)">
+            <input type="button" value="9" onclick="store(9)">
+            <input  style="background-color: white;" type="button" value="x" onclick="store('*')">
+
+            <input type="button" value="4" onclick="store(4)">
+            <input type="button" value="5" onclick="store(5)">
+            <input type="button" value="6" onclick="store(6)">
+            <input style="background-color: white;" type="button" value="-" onclick="store('-')">
+
+            <input type="button" value="1" onclick="store(1)">
+            <input type="button" value="2" onclick="store(2)">
+            <input type="button" value="3" onclick="store(3)">
+            <input style="background-color: white ; grid-row-end: span 2;" type="button" value="+" onclick="store('+')">
+
+            <input type="button" value="." onclick="store('.')">
+            <input type="button" value="0" onclick="store(0)">
+            <input style="background-color: white;" type="button" value="=" onclick="equal()">
+            
+            
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
